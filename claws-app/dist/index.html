@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Claws Mouse Control</title>
+<style>
+  :root {
+    --bg: #0b0d1c;
+    --card: #161a30;
+    --card-2: #1e2340;
+    --fg: #eaf0ff;
+    --muted: #8890b8;
+    --accent-a: #5ed0ff;
+    --accent-b: #9b6bff;
+    --accent: #7ea6ff;
+    --accent-grad: linear-gradient(135deg, var(--accent-a), var(--accent-b));
+    --accent-dim: #262b52;
+    --good: #5ad17a;
+    --bad: #ff6b5e;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: -apple-system, "Segoe UI", Roboto, sans-serif;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+  header {
+    padding: 20px 24px 4px;
+  }
+  header h1 {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 700;
+  }
+  header h1 span {
+    background: var(--accent-grad);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .model {
+    padding: 0 24px 16px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .card {
+    background: var(--card);
+    margin: 0 24px 16px;
+    border-radius: 12px;
+    padding: 18px 20px;
+  }
+  .card h2 {
+    margin: 0 0 14px;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+  .stage-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 6px 0;
+  }
+  .pill {
+    border: none;
+    border-radius: 999px;
+    padding: 8px 16px;
+    font-weight: 700;
+    font-size: 13px;
+    cursor: pointer;
+    background: var(--card-2);
+    color: var(--muted);
+    transition: background 0.15s, color 0.15s;
+    flex: none;
+  }
+  .pill.active {
+    background: var(--accent-grad);
+    color: #fff;
+  }
+  .pill:hover:not(.active) { background: var(--accent-dim); color: var(--fg); }
+  input[type="range"] {
+    flex: 1;
+    accent-color: var(--accent);
+    height: 4px;
+  }
+  .dpi-value {
+    width: 56px;
+    text-align: right;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+  }
+  .poll-row {
+    display: flex;
+    gap: 8px;
+  }
+  #status {
+    margin: 0 24px 20px;
+    font-size: 12px;
+    color: var(--muted);
+    min-height: 16px;
+  }
+  #status.ok { color: var(--good); }
+  #status.err { color: var(--bad); }
+</style>
+</head>
+<body>
+  <header><h1><span>CLAWS</span> mouse control</h1></header>
+  <div class="model" id="model"></div>
+
+  <div class="card">
+    <h2>DPI stages</h2>
+    <div id="stages"></div>
+  </div>
+
+  <div class="card">
+    <h2>Polling rate</h2>
+    <div class="poll-row" id="poll"></div>
+  </div>
+
+  <div id="status">ready</div>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+extracted/
+*.pcapng
+*.zip
+__pycache__/
+claws-app/src-tauri/target/
+claws-app/src-tauri/gen/
